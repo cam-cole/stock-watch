@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Watch</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="title is-2 has-background-success has-text-centered p-3 has-text-white">Stock Watch</h1>
+    </header>
+    <main class="columns">
+        <!-- Search Bar Section -->
+        <section class="column is-2 mt-3">
+            <h2 class="title is-4">Search for a Stock: </h2>
+            <input id="search-input" class="input column is-full mb-2" type="text" placeholder="TGT">
+            <button id="search" class="button is-success column is-full">Search</button>
+            <hr class="search-bar-break">
+            <div id="searched-cities">
+                
+            </div>
+        </section>
+        <!-- Weather Data Section -->
+        <section class="column is-10">
+            <!-- Current Weather Card -->
+            <div class="card mt-3">
+                <div class="card-header has-background-success">
+                    <h3 id="city-name" class="title is-3 m-3 has-text-white">Current City Weather</h3>
+                    <h3 id="current-date" class="title is-3 m-3 has-text-white"></h3>
+                    <img id="current-weather-icon" class="weather-icon m-3" alt="">
+                </div>
+                <div class="card-content">
+                    <p id="current-temp" class="mb-3">Temp: </p>
+                    <p id="current-wind" class="mb-3">Wind: </p>
+                    <p id="current-humidity" class="mb-3">Humidity: </p>
+                    <p>UV Index: <span id="current-uv-index"></span></p>
+                </div>
+            </div>
+            <!-- 5 Day Forecast Card -->
+            <div class="card mt-3">
+                <div class="card-header has-background-info">
+                    <h3 class="title is-3 m-3 has-text-white">5 Day Forecast:</h3>
+                </div>
+                <div class="card-content columns">
+                    <!-- Day One Card -->
+                    <div class="card column is-one-fifth">
+                        <div class="card-header has-background-info">
+                            <h5 id="day-one-date" class="title is-5 m-3 has-text-white">Day One</h5>
+                        </div>
+                        <div class="card-content">
+                            <img id="day-one-icon" src="" alt="">
+                            <p id="day-one-temp">Temp: </p>
+                            <p id="day-one-wind">Wind: </p>
+                            <p id="day-one-humidity">Humidity: </p>
+                        </div>
+                    </div>
+                    <!-- Day Two Card -->
+                    <div class="card column is-one-fifth">
+                        <div class="card-header has-background-info">
+                            <h5 id="day-two-date" class="title is-5 m-3 has-text-white">Day Two</h5>
+                        </div>
+                        <div class="card-content">
+                            <img id="day-two-icon" src="" alt="">
+                            <p id="day-two-temp">Temp: </p>
+                            <p id="day-two-wind">Wind: </p>
+                            <p id="day-two-humidity">Humidity: </p>
+                        </div>
+                    </div>
+                    <!-- Day 3 Card -->
+                    <div class="card column is-one-fifth">
+                        <div class="card-header has-background-info">
+                            <h5 id="day-three-date" class="title is-5 m-3 has-text-white">Day Three</h5>
+                        </div>
+                        <div class="card-content">
+                            <img id="day-three-icon" src="" alt="">
+                            <p id="day-three-temp">Temp: </p>
+                            <p id="day-three-wind">Wind: </p>
+                            <p id="day-three-humidity">Humidity: </p>
+                        </div>
+                    </div>
+                    <!-- Day 4 Card -->
+                    <div class="card column is-one-fifth">
+                        <div class="card-header has-background-info">
+                            <h5 id="day-four-date" class="title is-5 m-3 has-text-white">Day Four</h5>
+                        </div>
+                        <div class="card-content">
+                            <img id="day-four-icon" src="" alt="">
+                            <p id="day-four-temp">Temp: </p>
+                            <p id="day-four-wind">Wind: </p>
+                            <p id="day-four-humidity">Humidity: </p>
+                        </div>
+                    </div>
+                    <!-- Day 5 Card -->
+                    <div class="card column is-one-fifth">
+                        <div class="card-header has-background-info">
+                            <h5 id="day-five-date" class="title is-5 m-3 has-text-white">Day Five</h5>
+                        </div>
+                        <div class="card-content">
+                            <img id="day-five-icon" src="" alt="">
+                            <p id="day-five-temp">Temp: </p>
+                            <p id="day-five-wind">Wind: </p>
+                            <p id="day-five-humidity">Humidity: </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>

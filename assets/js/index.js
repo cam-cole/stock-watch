@@ -15,8 +15,21 @@ var getStockProfile = function(stockTicker) {
                 var stockName = data.quoteType.longName;
                 var ticker = data.quoteType.symbol;
                 var currentPrice = data.price.regularMarketPrice.fmt;
+                var marketChangePrice = data.price.regularMarketChange.fmt;
+                var marketChangePct = data.price.regularMarketChangePercent.fmt;
                 $('#stock-name').text(stockName + " (" + ticker + ")");
-                $('#current-price').text("Price: $" + currentPrice);
+                $('#current-price').text("$" + currentPrice);
+                $('#current-market-change').text('$' + marketChangePrice + " (" + marketChangePct + ")");
+
+                if(marketChangePrice < 0) {
+                    $('#current-market-change').removeClass("has-text-white");
+                    $('#current-market-change').addClass("has-text-danger");
+                }
+
+                else if (marketChangePrice > 0) {
+                    $('#current-market-change').removeClass("has-text-white");
+                    $('#current-market-change').addClass("has-text-success");
+                }
                 
             })
         }

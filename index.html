@@ -28,12 +28,12 @@
             <!-- Current Weather Card -->
             <div class="card mt-3">
                 <div class="card-header has-background-success">
-                    <h3 id="city-name" class="title is-3 m-3 has-text-white">Current City Weather</h3>
+                    <h3 id="stock-name" class="title is-3 m-3 has-text-white">Stock Info</h3>
                     <h3 id="current-date" class="title is-3 m-3 has-text-white"></h3>
                     <img id="current-weather-icon" class="weather-icon m-3" alt="">
                 </div>
                 <div class="card-content">
-                    <p id="current-temp" class="mb-3">Temp: </p>
+                    <p id="current-price" class="mb-3">Price: </p>
                     <p id="current-wind" class="mb-3">Wind: </p>
                     <p id="current-humidity" class="mb-3">Humidity: </p>
                     <p>UV Index: <span id="current-uv-index"></span></p>
@@ -41,13 +41,13 @@
             </div>
             <!-- 5 Day Forecast Card -->
             <div class="card mt-3">
-                <div class="card-header has-background-info">
-                    <h3 class="title is-3 m-3 has-text-white">5 Day Forecast:</h3>
+                <div class="card-header has-background-success">
+                    <h3 class="title is-3 m-3 has-text-white">Saved Stocks</h3>
                 </div>
                 <div class="card-content columns">
                     <!-- Day One Card -->
                     <div class="card column is-one-fifth">
-                        <div class="card-header has-background-info">
+                        <div class="card-header has-background-success">
                             <h5 id="day-one-date" class="title is-5 m-3 has-text-white">Day One</h5>
                         </div>
                         <div class="card-content">
@@ -59,7 +59,7 @@
                     </div>
                     <!-- Day Two Card -->
                     <div class="card column is-one-fifth">
-                        <div class="card-header has-background-info">
+                        <div class="card-header has-background-success">
                             <h5 id="day-two-date" class="title is-5 m-3 has-text-white">Day Two</h5>
                         </div>
                         <div class="card-content">
@@ -71,7 +71,7 @@
                     </div>
                     <!-- Day 3 Card -->
                     <div class="card column is-one-fifth">
-                        <div class="card-header has-background-info">
+                        <div class="card-header has-background-success">
                             <h5 id="day-three-date" class="title is-5 m-3 has-text-white">Day Three</h5>
                         </div>
                         <div class="card-content">
@@ -83,7 +83,7 @@
                     </div>
                     <!-- Day 4 Card -->
                     <div class="card column is-one-fifth">
-                        <div class="card-header has-background-info">
+                        <div class="card-header has-background-success">
                             <h5 id="day-four-date" class="title is-5 m-3 has-text-white">Day Four</h5>
                         </div>
                         <div class="card-content">
@@ -95,7 +95,7 @@
                     </div>
                     <!-- Day 5 Card -->
                     <div class="card column is-one-fifth">
-                        <div class="card-header has-background-info">
+                        <div class="card-header has-background-success">
                             <h5 id="day-five-date" class="title is-5 m-3 has-text-white">Day Five</h5>
                         </div>
                         <div class="card-content">
@@ -111,6 +111,7 @@
         </section>
 
     </main>
-    <script src="./js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./assets/js/index.js"></script>
 </body>
 </html>

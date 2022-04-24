@@ -50,10 +50,11 @@ var getSavedStockProfiles = function(savedTickers) {
                     var stockName = data.quoteType.longName;
                     var ticker = data.quoteType.symbol;
 
-                    $('#stock-name').text(stockName + " (" + ticker + ")");
+                    $('#saved-stock' + (i+1)).text(stockName + " (" + ticker + ")");
                 })
             }
         })
+        setTimeout(console.log('Fetched stock: ' + i), 1000);
     }
 }
 
@@ -72,6 +73,7 @@ $('#search').on("click", function() {
     console.log("Search button was clicked!");
     var stockTicker = $("#search-input").val();
     getStockProfile(stockTicker);
+    getSavedStockProfiles(savedTickers);
     // getStockGraph(stockTicker);
 })
 

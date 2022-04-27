@@ -54,7 +54,7 @@ var getSavedStockProfiles = function(savedTickers) {
                 })
             }
         })
-        setTimeout(console.log('Fetched stock: ' + i), 1000);
+        setTimeout(console.log('Fetched stock: ' + i), 5000);
     }
 }
 

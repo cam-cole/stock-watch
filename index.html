@@ -17,7 +17,8 @@
         <section class="column is-2 mt-3">
             <h2 class="title is-4 has-text-white">Search for a Stock: </h2>
             <input id="search-input" class="input column is-full mb-2" type="text" placeholder="TGT">
-            <button id="search" class="button is-success column is-full">Search</button>
+            <button id="search" class="button is-success column is-full mb-2">Search</button>
+            <button id="update" class="button is-success column is-full">Update All</button>
             <hr class="search-bar-break">
             <div id="searched-cities">
                 
@@ -29,7 +30,7 @@
             <div class="card mt-3 has-background-black">
                 <div class="card-header has-background-success">
                     <h3 id="stock-name" class="title is-3 m-3 has-text-white">Stock Info</h3>
-                    <h3 id="current-date" class="title is-3 m-3 has-text-white"></h3>
+                    <button id="save-button" class="button m-3 is-success is-light">Save</button>
                 </div>
                 <div class="card-content">
                     <p id="current-price" class="mb-3 has-text-white title is-4">Price: </p>
@@ -38,10 +39,10 @@
                 </div>
             </div>
             <!-- Saved Stocks Card -->
-            <div class="card mt-3 has-background-black">
-                <div class="card-header has-background-success">
+            <div id="saved-stocks-container" class="card mt-3 has-background-black">
+                <!-- <div class="card-header has-background-success">
                     <h3 class="title is-3 m-3 has-text-white">Saved Stocks</h3>
-                </div>
+                </div> -->
                 <div class="card-content columns">
                     <!-- Saved Stock One Card -->
                     <div class="card column is-one-fifth has-background-black">

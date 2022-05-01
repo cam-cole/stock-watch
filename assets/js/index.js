@@ -73,16 +73,18 @@ var getSavedStockProfiles = function(savedTickers, i) {
     
 }
 
-// var getStockGraph = function(stockTicker) {
-//     fetch('https://yh-finance.p.rapidapi.com/stock/v3/get-chart?interval=1mo&symbol='+ stockTicker + '&range=5y&region=US&includePrePost=false&useYfid=true&includeAdjustedClose=true&events=capitalGain%2Cdiv%2Csplit', options).then(function(response) {
-//         if(response.ok) {
-//             response.json().then(function(data) {
-//                 console.log(data);
-//                 console.log(data.chart);
-//             })
-//         }
-//     })
-// }
+var getStockGraph = function(stockTicker) {
+    fetch('https://yh-finance.p.rapidapi.com/stock/v3/get-chart?interval=1mo&symbol='+ stockTicker + '&range=5y&region=US&includePrePost=false&useYfid=true&includeAdjustedClose=true&events=capitalGain%2Cdiv%2Csplit', options).then(function(response) {
+        if(response.ok) {
+            response.json().then(function(data) {
+                console.log(data);
+                console.log(data.chart);
+
+                $('#current-stock-graph').attr('src', 'https://yh-finance.p.rapidapi.com/stock/v3/get-chart?interval=1mo&symbol='+ stockTicker + '&range=5y&region=US&includePrePost=false&useYfid=true&includeAdjustedClose=true&events=capitalGain%2Cdiv%2Csplit')
+            })
+        }
+    })
+}
 
 $('#search').on("click", function() {
     console.log("Search button was clicked!");
@@ -91,6 +93,6 @@ $('#search').on("click", function() {
     for (i = 0; i < savedTickers.length; i++) {
         getSavedStockProfiles(savedTickers, i);
     }
-    // getStockGraph(stockTicker);
+    getStockGraph(stockTicker);
 })
 

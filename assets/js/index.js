@@ -6,7 +6,7 @@ const options = {
 	}
 };
 
-var savedTickers = ['SPY', 'VUG', 'VGT', 'TSLA', 'AAPL'];
+var savedTickers = [];
 var savedStocksContainer = document.querySelector('#saved-stocks-container');
 var stockObject = {};
 
@@ -62,18 +62,18 @@ var getSavedStockProfiles = function(savedTickers, i) {
                     var marketChangePrice = data.price.regularMarketChange.fmt;
                     var marketChangePct = data.price.regularMarketChangePercent.fmt;
 
-                    $('#saved-stock' + (i + 1)).text(stockName + " (" + ticker + ")");
-                    $('#saved-stock' + (i + 1) + '-price').text("$" + currentPrice);
-                    $('#saved-stock' + (i + 1) + '-market-change').text('$' + marketChangePrice + " (" + marketChangePct + ")");
+                    $('#saved-stock' + (i)).text(stockName + " (" + ticker + ")");
+                    $('#saved-stock' + (i) + '-price').text("$" + currentPrice);
+                    $('#saved-stock' + (i) + '-market-change').text('$' + marketChangePrice + " (" + marketChangePct + ")");
 
                     if(marketChangePrice < 0) {
-                        $('#saved-stock' + (i + 1) + '-market-change').removeClass("has-text-white");
-                        $('#saved-stock' + (i + 1) + '-market-change').addClass("has-text-danger");
+                        $('#saved-stock' + (i) + '-market-change').removeClass("has-text-white");
+                        $('#saved-stock' + (i) + '-market-change').addClass("has-text-danger");
                     }
 
                     else if (marketChangePrice > 0) {
-                        $('#saved-stock' + (i + 1) + '-market-change').removeClass("has-text-white");
-                        $('#saved-stock' + (i + 1) + '-market-change').addClass("has-text-success");
+                        $('#saved-stock' + (i) + '-market-change').removeClass("has-text-white");
+                        $('#saved-stock' + (i) + '-market-change').addClass("has-text-success");
                     }
                 })
             }
@@ -83,28 +83,24 @@ var getSavedStockProfiles = function(savedTickers, i) {
 }
 
 var saveStock = function(stockName, ticker, currentPrice, marketChangePrice, marketChangePct) {
-    var index = savedTickers.length + 1;
-    var newStockContainer = document.createElement("div")
-    newStockContainer.id = "newStock";
-    $('#newStock').addClass("card column is-one-fifth has-background-black");
-    newStockContainer.innerHTML = `
-        <div class="card-header has-background-success">
-            <h5 id="saved-stock` + index + `" class="title is-5 m-3 has-text-white">`+ stockName + " (" + ticker + ")" + ` </h5>
-        </div>
-        <div class="card-content">
-            <p id="saved-stock` + index + `-price" class="title is-6 has-text-white mb-2">` + "$" + currentPrice +  `</p>
-            <p id="saved-stock` + index + `-market-change">` + '$' + marketChangePrice + " (" + marketChangePct + ")" + `</p>
+    savedTickers.push(ticker);
+
+    var index = savedTickers.length - 1;
+    // var newStockContainer = document.createElement("div").classList.add("card column is-one-fifth has-background-black")
+    // newStockContainer.id = "newStock" + index;
+    // $('#newStock' + index).addClass("card column is-one-fifth has-background-black");
+    savedStocksContainer.innerHTML += 
+        `<div class="card column is-one-fifth has-background-black">
+            <div class="card-header has-background-success">
+                <h5 id="saved-stock` + index + `" class="title is-5 m-3 has-text-white">`+ stockName + " (" + ticker + ")" + ` </h5>
+            </div>
+            <div class="card-content">
+                <p id="saved-stock` + index + `-price" class="title is-6 has-text-white mb-2">` + "$" + currentPrice +  `</p>
+                <p id="saved-stock` + index + `-market-change">` + '$' + marketChangePrice + " (" + marketChangePct + ")" + `</p>
+            </div>
         </div>`
 
-    if(marketChangePrice < 0) {
-        $('#saved-stock' + index + '-market-change').removeClass("has-text-white");
-        $('#saved-stock' + index + '-market-change').addClass("has-text-danger");
-    }
-    else if (marketChangePrice > 0) {
-        $('#saved-stock' + index + '-market-change').removeClass("has-text-white");
-        $('#saved-stock' + index + '-market-change').addClass("has-text-success");
-    }
-    savedStocksContainer.appendChild(newStockContainer);
+    // savedStocksContainer.appendChild(newStockContainer);
 }
 
 // var getStockGraph = function(stockTicker) {

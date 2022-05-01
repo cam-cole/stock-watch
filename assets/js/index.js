@@ -7,6 +7,8 @@ const options = {
 };
 
 var savedTickers = ['SPY', 'VUG', 'VGT', 'TSLA', 'AAPL'];
+var savedStocksContainer = document.querySelector('#saved-stocks-container');
+var stockObject = {};
 
 var getStockProfile = function(stockTicker) {
     fetch('https://yh-finance.p.rapidapi.com/stock/v2/get-profile?symbol=' + stockTicker + '&region=US', options).then(function(response) {
@@ -32,12 +34,19 @@ var getStockProfile = function(stockTicker) {
                     $('#current-market-change').removeClass("has-text-white");
                     $('#current-market-change').addClass("has-text-success");
                 }
+
+                stockObject = {
+                    name: stockName,
+                    ticker: ticker,
+                    price: currentPrice,
+                    marketChangePrice: marketChangePrice,
+                    marketChangePct: marketChangePct
+                }
+
                 
             })
         }
     })
-
-    
 }
 
 var getSavedStockProfiles = function(savedTickers, i) {
@@ -73,6 +82,31 @@ var getSavedStockProfiles = function(savedTickers, i) {
     
 }
 
+var saveStock = function(stockName, ticker, currentPrice, marketChangePrice, marketChangePct) {
+    var index = savedTickers.length + 1;
+    var newStockContainer = document.createElement("div")
+    newStockContainer.id = "newStock";
+    $('#newStock').addClass("card column is-one-fifth has-background-black");
+    newStockContainer.innerHTML = `
+        <div class="card-header has-background-success">
+            <h5 id="saved-stock` + index + `" class="title is-5 m-3 has-text-white">`+ stockName + " (" + ticker + ")" + ` </h5>
+        </div>
+        <div class="card-content">
+            <p id="saved-stock` + index + `-price" class="title is-6 has-text-white mb-2">` + "$" + currentPrice +  `</p>
+            <p id="saved-stock` + index + `-market-change">` + '$' + marketChangePrice + " (" + marketChangePct + ")" + `</p>
+        </div>`
+
+    if(marketChangePrice < 0) {
+        $('#saved-stock' + index + '-market-change').removeClass("has-text-white");
+        $('#saved-stock' + index + '-market-change').addClass("has-text-danger");
+    }
+    else if (marketChangePrice > 0) {
+        $('#saved-stock' + index + '-market-change').removeClass("has-text-white");
+        $('#saved-stock' + index + '-market-change').addClass("has-text-success");
+    }
+    savedStocksContainer.appendChild(newStockContainer);
+}
+
 // var getStockGraph = function(stockTicker) {
 //     fetch('https://yh-finance.p.rapidapi.com/stock/v3/get-chart?interval=1mo&symbol='+ stockTicker + '&range=5y&region=US&includePrePost=false&useYfid=true&includeAdjustedClose=true&events=capitalGain%2Cdiv%2Csplit', options).then(function(response) {
 //         if(response.ok) {
@@ -98,5 +132,10 @@ $('#update').on("click", function() {
     for (i = 0; i < savedTickers.length; i++) {
         getSavedStockProfiles(savedTickers, i);
     }
+})
+
+$('#save-button').on("click", function() {
+    saveStock(stockObject.name, stockObject.ticker, stockObject.price, stockObject.marketChangePrice, stockObject.marketChangePct)
+    console.log(stockObject);
 })
 

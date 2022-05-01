@@ -98,6 +98,9 @@ var saveStock = function(stockName, ticker, currentPrice, marketChangePrice, mar
                 <p id="saved-stock` + index + `-price" class="title is-6 has-text-white mb-2">` + "$" + currentPrice +  `</p>
                 <p id="saved-stock` + index + `-market-change">` + '$' + marketChangePrice + " (" + marketChangePct + ")" + `</p>
             </div>
+            <footer id="saved-stock-delete-button" class="card-footer">
+                <button class="button is-danger is-fullwidth">Delete</button>
+            </footer>
         </div>`
 
     // savedStocksContainer.appendChild(newStockContainer);
@@ -133,5 +136,9 @@ $('#update').on("click", function() {
 $('#save-button').on("click", function() {
     saveStock(stockObject.name, stockObject.ticker, stockObject.price, stockObject.marketChangePrice, stockObject.marketChangePct)
     console.log(stockObject);
+})
+
+$('#saved-stock-delete-button').click(function() {
+    $(this).parent().remove();
 })
 

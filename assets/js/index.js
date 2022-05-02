@@ -84,13 +84,10 @@ var getSavedStockProfiles = function(savedTickers, i) {
 
 var saveStock = function(stockName, ticker, currentPrice, marketChangePrice, marketChangePct) {
     savedTickers.push(ticker);
-
     var index = savedTickers.length - 1;
-    // var newStockContainer = document.createElement("div").classList.add("card column is-one-fifth has-background-black")
-    // newStockContainer.id = "newStock" + index;
-    // $('#newStock' + index).addClass("card column is-one-fifth has-background-black");
+
     savedStocksContainer.innerHTML += 
-        `<div class="card column is-one-fifth has-background-black">
+        `<div class="card column is-one-fifth has-background-black is-fullheight">
             <div class="card-header has-background-success">
                 <h5 id="saved-stock` + index + `" class="title is-5 m-3 has-text-white">`+ stockName + " (" + ticker + ")" + ` </h5>
             </div>
@@ -98,26 +95,12 @@ var saveStock = function(stockName, ticker, currentPrice, marketChangePrice, mar
                 <p id="saved-stock` + index + `-price" class="title is-6 has-text-white mb-2">` + "$" + currentPrice +  `</p>
                 <p id="saved-stock` + index + `-market-change">` + '$' + marketChangePrice + " (" + marketChangePct + ")" + `</p>
             </div>
-            <footer id="saved-stock-delete-button" class="card-footer">
-                <button class="button is-danger is-fullwidth">Delete</button>
+            <footer class="card-footer is-align-content-flex-end">
+                <button id="saved-stock-delete-button" class="button is-danger is-fullwidth">Delete</button>
             </footer>
         </div>`
-
-    // savedStocksContainer.appendChild(newStockContainer);
 }
 
-// var getStockGraph = function(stockTicker) {
-//     fetch('https://yh-finance.p.rapidapi.com/stock/v3/get-chart?interval=1mo&symbol='+ stockTicker + '&range=5y&region=US&includePrePost=false&useYfid=true&includeAdjustedClose=true&events=capitalGain%2Cdiv%2Csplit', options).then(function(response) {
-//         if(response.ok) {
-//             response.json().then(function(data) {
-//                 console.log(data);
-//                 console.log(data.chart);
-
-//                 $('#current-stock-graph').attr('src', 'https://yh-finance.p.rapidapi.com/stock/v3/get-chart?interval=1mo&symbol='+ stockTicker + '&range=5y&region=US&includePrePost=false&useYfid=true&includeAdjustedClose=true&events=capitalGain%2Cdiv%2Csplit')
-//             })
-//         }
-//     })
-// }
 
 $('#search').on("click", function() {
     console.log("Search button was clicked!");
@@ -138,7 +121,13 @@ $('#save-button').on("click", function() {
     console.log(stockObject);
 })
 
-$('#saved-stock-delete-button').click(function() {
-    $(this).parent().remove();
+$(document).on("click", '#saved-stock-delete-button', function() {
+    $(this).parent().parent().remove();
+    console.log("Delete button was clicked!");
+})
+
+$('#delete-all').on("click", function() {
+    savedTickers = [];
+    savedStocksContainer.innerHTML = "";
 })
 

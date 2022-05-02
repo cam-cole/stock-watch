@@ -1,4 +1,4 @@
 # stock-watch
 
 ## website
-https://cam-cole.github.io/portfolio
+https://cam-cole.github.io/stock-watch
